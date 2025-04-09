@@ -78,6 +78,18 @@ int find_min(list*& h, list*& t) {
     return min;
 }
 
+int find_last_odd(list*& h, list*& t) {
+    list *p = h;
+    int last_odd = -1;
+    while (p) {
+        if (p->inf % 2 != 0) {
+            last_odd = p->inf;
+        }
+        p = p->next;
+    }
+    return last_odd;
+}
+
 int main() {
     list* head = nullptr;
     list* tail = nullptr;
