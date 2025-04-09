@@ -66,6 +66,18 @@ void del_list(list *&h) {
     }
 }
 
+int find_min(list*& h, list*& t) {
+    list *p = h;
+    int min = p->inf;
+    while (p) {
+        if (p->inf < min) {
+            min = p->inf;
+        }
+        p = p->next;
+    }
+    return min;
+}
+
 int main() {
     list* head = nullptr;
     list* tail = nullptr;
