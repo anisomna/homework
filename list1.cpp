@@ -90,6 +90,18 @@ int find_last_odd(list*& h, list*& t) {
     return last_odd;
 }
 
+void insert_after_min(list*& h, list*& t, int min, int last_odd) {
+    if (last_odd != -1){
+        list *p = h;
+        while (p) {
+            if (p->inf == min) {
+                insert_after(h, t, p, last_odd);
+            }
+            p = p->next;
+        }
+    }
+}
+
 int main() {
     list* head = nullptr;
     list* tail = nullptr;
