@@ -115,6 +115,16 @@ int main() {
     }
     print(head);
 
+    int min = find_min(head, tail);
+    int last_odd = find_last_odd(head, tail);
+
+    if (last_odd != -1) {
+        insert_after_min(head, tail, min, last_odd);
+    }
+
+    cout << endl;
+    print(head);
+    
     del_list(head);
     return 0;
 }
