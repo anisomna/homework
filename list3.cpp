@@ -98,6 +98,23 @@ int sred_arifm(list*& h) {
     return sum/n;
 }
 
+list *find_arifm(list*& h, list*& t) {
+    list *p = h;
+    list* head = nullptr;
+    list* tail = nullptr;
+    
+    while (p) {
+        int arifm = sred_arifm(p);
+        if (p->inf <= arifm) 
+            push_back(head, tail, p->inf);
+        if (!p->next)
+            push_back(head, tail, p->inf);
+        p = p->next;
+    }
+
+    return head;
+}
+
 int main() {
     list* head = nullptr;
     list* tail = nullptr;
