@@ -100,7 +100,13 @@ int main() {
         push_back(head, tail, x);
     }
     print(head);
+    
+    list* res = find(head, tail);
 
+    cout << endl;
+    print(res);
+
+    del_list(res);
     del_list(head);
     return 0;
 }
