@@ -84,6 +84,20 @@ void del_list(list *&h) {
     }
 }
 
+int sred_arifm(list*& h) {
+    int sum = 0, n = 0;
+    if (h && h->next) {
+        list *p = h;
+        p = p->next;
+        while (p) {
+            sum += p->inf;
+            n ++;
+            p = p->next;
+        }
+    }
+    return sum/n;
+}
+
 int main() {
     list* head = nullptr;
     list* tail = nullptr;
