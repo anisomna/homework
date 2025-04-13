@@ -95,7 +95,8 @@ int sred_arifm(list*& h) {
             p = p->next;
         }
     }
-    return sum/n;
+    if (n > 0) return sum/n;
+    else return 0;
 }
 
 list *find_arifm(list*& h, list*& t) {
@@ -129,7 +130,7 @@ int main() {
     
     print(head);
 
-    list* res = find(head, tail);
+    list* res = find_arifm(head, tail);
 
     cout << endl;
     print(res);
