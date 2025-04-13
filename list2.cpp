@@ -41,13 +41,26 @@ void print(list* h) {
     }
 }
 
-list *find(list*& h, list*& t, int x) {
+list *find(list*& h, list*& t) {
     list *p = h;
+    list* head1 = nullptr;
+    list* tail1 = nullptr;
+    list* head_res = nullptr;
+    list* tail_res = nullptr;
+
     while (p) {
-        if (p->inf == x) break;
+        if (p->inf % 2 == 0)
+            push_back(head_res, tail_res, p->inf);
+        else
+            push_back(head1, tail1, p->inf);
         p = p->next;
     }
-    return p;
+
+    while (head1) {
+        push_back(head_res, tail_res, head1->inf);
+        head1 = head1->next;
+    }
+    return head_res;
 }
 
 void insert_after(list*& h, list*& t, list *r, int y) {
