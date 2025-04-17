@@ -199,6 +199,28 @@ void delete_node(tree *&tr, tree *v){
     }
 }
 
+vector<tree*> find_nephews(tree* node) {
+    vector<tree*> nephews;
+
+    if (node && node->parent) {
+        tree* node_parent = node->parent;
+
+        if (node_parent->parent) {
+            tree* grandparent = node_parent->parent;
+
+            tree* unc;
+            if (node_parent == grandparent->left) unc = grandparent->right;
+            else unc = grandparent->left;
+            
+            if (unc) {
+                if (unc->left) nephews.push_back(unc->left);
+                if (unc->right) nephews.push_back(unc->right);
+            }
+        }
+    }
+    return nephews;
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
