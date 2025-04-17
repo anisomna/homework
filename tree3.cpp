@@ -109,6 +109,13 @@ tree* Max(tree* tr) {
     else return Max(tr->right);
 }
 
+tree *find(tree *tre, int x) {
+    tree *tr = tre;
+    if (!tr || x == tr->inf) return tr;
+    if (x < tr->inf) return find(tr->left, x);
+    else return find(tr->right, x);
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
