@@ -221,11 +221,33 @@ vector<tree*> find_nephews(tree* node) {
     return nephews;
 }
 
+void delete_nephew(tree*& tr, int x) {
+    tree* target_node = find(tr, x);
+    if (target_node) {
+        vector<tree*> nephews = find_nephews(target_node);
+
+        if (!nephews.empty()) {
+            tree* left_nephew = nullptr;
+            int min_val = numeric_limits<int>::max();
+            for (tree* nephew : nephews) {
+                if (nephew->inf < min_val) {
+                    min_val = nephew->inf;
+                    left_nephew = nephew;
+                }
+            }
+            cout << "nephew to be deleted: " << left_nephew->inf << endl;
+            delete_node(tr, left_nephew);
+        } 
+        else cout << "no nephews to be deleted" << endl;
+    } 
+    else cout << "not found x" << endl;
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
     tree *tr = NULL;
-    int n, x;
+    int n, x, val;
 
     cout << "n = ";
     cin >> n;
@@ -235,6 +257,14 @@ int main() {
         cin >> x;
         insert(tr, x);
     }
+
+    cout << endl;
+    print_tree(tr, tree_height(tr));
+
+    cout << "whose left nephew to delete: ";
+    cin >> val;
+
+    delete_nephew(tr, val);
 
     cout << endl;
     print_tree(tr, tree_height(tr));
