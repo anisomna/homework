@@ -59,6 +59,16 @@ int tree_height(tree *tre) {
     return max;
 }
 
+void print_tree(tree *tre, int lvl) {
+    tree *tr = tre;
+    if (tr) {
+        print_tree(tr->left, lvl + 1);
+        for (int i = 0; i < lvl; i++) cout << "     ";
+        cout << tr->inf << endl;
+        print_tree(tr->right, lvl + 1);
+    }
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
@@ -73,6 +83,8 @@ int main() {
         cin >> x;
         insert(tr, x);
     }
+
+    print_tree(tr, 0);
 
 return 0;
 }
