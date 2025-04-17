@@ -122,7 +122,8 @@ int main() {
     cout << endl;
     print_tree(tr, tree_height(tr));
 
-    cout << "sun of internal values = " << (sum_inside(tr));
+    int root = tr->inf;
+    cout << "sum of internal values = " << (sum_inside(tr) - root);
 
 return 0;
 }
