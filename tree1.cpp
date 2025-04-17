@@ -59,13 +59,43 @@ int tree_height(tree *tre) {
     return max;
 }
 
-void print_tree(tree *tre, int lvl) {
-    tree *tr = tre;
-    if (tr) {
-        print_tree(tr->left, lvl + 1);
-        for (int i = 0; i < lvl; i++) cout << "     ";
-        cout << tr->inf << endl;
-        print_tree(tr->right, lvl + 1);
+void print_tree(tree *tr, int k) {
+    if (!tr) 
+        cout << "tree is empty" << endl;
+    else {
+        queue<tree*> cur, next;
+        tree *r = tr;
+        cur.push(r);
+        int j = 0;
+        while (cur.size()) {
+            if (j == 0) {
+                for (int i = 0; i < (int)pow(2.0, k) - 1; i++)
+                    cout << ' ';
+            }
+            tree *buf = cur.front();
+            cur.pop();
+            j++;
+            if (buf) {
+                cout << buf->inf;
+                next.push(buf->left);
+                next.push(buf->right);
+                for (int i = 0; i < (int)pow(2.0, k + 1) - 1; i++)
+                    cout << ' ';
+            }
+
+            if (!buf) {
+                for (int i = 0; i < (int)pow(2.0, k + 1) - 1; i++)
+                    cout << ' ';
+                cout << ' ';
+            }
+
+            if (cur.empty()) {
+                cout << endl;
+                swap(cur, next);
+                j = 0;
+                k--;
+            }
+        }
     }
 }
 
@@ -98,14 +128,14 @@ void find_path(tree *tr, int x) {
             cout << tr->inf << " ";
             if (x < tr->inf) {
                 tr = tr->left;
-            } 
+            }
             else if (x > tr->inf) {
                 tr = tr->right;
-            } 
+            }
             else break;
         }
     }
-    else 
+    else
         cout << "no such value found in the tree";
     cout << endl;
 }
@@ -125,7 +155,8 @@ int main() {
         insert(tr, x);
     }
 
-    print_tree(tr, 0);
+    cout << endl;
+    print_tree(tr, tree_height(tr));
 
     cout << "show path to: ";
     cin >> val;
