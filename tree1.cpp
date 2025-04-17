@@ -48,6 +48,17 @@ int node_depth(tree *tre) {
     return k;
 }
 
+int tree_height(tree *tre) {
+    tree *tr = tre;
+    static int max = 0;
+    if (tr) {
+        tree_height(tr->left);
+        tree_height(tr->right);
+        if (!tr->left && !tr->right && node_depth(tr) > max) max = node_depth(tr); 
+    }
+    return max;
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
