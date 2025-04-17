@@ -38,6 +38,16 @@ void insert(tree *&tr, int x, tree *parent = NULL) {
     else insert(tr->right, x, tr);
 }
 
+int node_depth(tree *tre) {
+    tree *tr = tre;
+    int k = -1;
+    while (tr != NULL) {
+        tr = tr->parent;
+        k++;
+    }
+    return k;
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
