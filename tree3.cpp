@@ -99,6 +99,16 @@ void print_tree(tree *tr, int k){
     }
 }
 
+tree* Min(tree* tr) {
+    if (!tr->left) return tr;
+    else return Min(tr->left);
+}
+
+tree* Max(tree* tr) {
+    if (!tr->right) return tr;
+    else return Max(tr->right);
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
