@@ -69,6 +69,28 @@ void print_tree(tree *tre, int lvl) {
     }
 }
 
+bool in_tree(tree *tr, int x) {
+    tree *temp = tr;
+    bool fl;
+    while (temp) {
+        if (x == temp->inf) {
+            fl = true;
+            break;
+        }
+        else if (x < temp->inf) {
+            temp = temp->left;
+        } 
+        else if (x > temp->inf) {
+            temp = temp->right;
+        } 
+        else {
+            fl = false;
+            break;
+        }
+    }
+    return fl;
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
