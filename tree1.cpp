@@ -91,6 +91,25 @@ bool in_tree(tree *tr, int x) {
     return fl;
 }
 
+void find_path(tree *tr, int x) {
+    if (in_tree(tr, x)) {
+        cout << "path: ";
+        while (tr) {
+            cout << tr->inf << " ";
+            if (x < tr->inf) {
+                tr = tr->left;
+            } 
+            else if (x > tr->inf) {
+                tr = tr->right;
+            } 
+            else break;
+        }
+    }
+    else 
+        cout << "no such value found in the tree";
+    cout << endl;
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
@@ -107,6 +126,11 @@ int main() {
     }
 
     print_tree(tr, 0);
+
+    cout << "show path to: ";
+    cin >> val;
+
+    find_path(tr, val);
 
 return 0;
 }
