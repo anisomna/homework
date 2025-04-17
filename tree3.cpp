@@ -116,6 +116,30 @@ tree *find(tree *tre, int x) {
     else return find(tr->right, x);
 }
 
+tree* Next(tree* tr, int x) { 
+    tree* n = find(tr, x);
+    if (n->right) // если есть правый ребенок
+        return Min(n->right); // min по правой ветке
+    tree* y = n->parent; // родитель
+    while (y && n == y->right) { // пока не дошли до корня или узел - правый ребенок
+        n = y; // идем вверх по дереву
+        y = y->parent;
+    }
+    return y; // возвращаем родителя
+}
+
+tree* Prev(tree* tr, int x) {
+    tree* n = find(tr, x);
+    if (n->left) // если есть левый ребенок
+        return Max(n->left); // max по левой ветке
+    tree* y = n->parent; // родитель
+    while (y && n == y->left) { // пока не дошли до корня или узел левый ребенок
+        n = y; // идем вверх по дереву
+        y = y->parent;
+    }
+    return y; // возвращаем родителя
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
