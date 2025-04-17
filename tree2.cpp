@@ -99,6 +99,11 @@ void print_tree(tree *tr, int k){
     }
 }
 
+int sum_inside(tree* tr) {
+    if (!tr || (!tr->left && !tr->right)) return 0;
+    return tr->inf + sum_inside(tr->left) + sum_inside(tr->right);
+}
+
 // 10
 // 8 6 4 5 7 10 9 11 3 2
 int main() {
@@ -116,6 +121,8 @@ int main() {
 
     cout << endl;
     print_tree(tr, tree_height(tr));
+
+    cout << "sun of internal values = " << (sum_inside(tr));
 
 return 0;
 }
