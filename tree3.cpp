@@ -205,17 +205,13 @@ vector<tree*> find_nephews(tree* node) {
     if (node && node->parent) {
         tree* node_parent = node->parent;
 
-        if (node_parent->parent) {
-            tree* grandparent = node_parent->parent;
-
-            tree* unc;
-            if (node_parent == grandparent->left) unc = grandparent->right;
-            else unc = grandparent->left;
-            
-            if (unc) {
-                if (unc->left) nephews.push_back(unc->left);
-                if (unc->right) nephews.push_back(unc->right);
-            }
+        if (node_parent->left == node) {
+            tree* child = node_parent->right;
+            nephews.push_back(child->left);
+        }
+        if (node_parent->right == node) {
+            tree* child = node_parent->left;
+            nephews.push_back(child->left);
         }
     }
     return nephews;
