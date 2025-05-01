@@ -42,11 +42,31 @@ void print(vector<vector<int>> vc) {
     }
 }
 
+vector<int> dfs(vector<vector<int>> vc, vector<int> a, int x) {
+    a[x] = 1;
+
+    for (int i = 0; i < vc[x].size(); i++) {
+        int s = vc[x][i];
+        if (a[s] == 0) {
+            a[s] = 1;
+        }
+    }
+    return a;
+}
+
 int main(){
 	vector<vector<int>> vec;
     vec = input();
     print(vec);
     cout << endl;
+
+    int node;
+    cout << "choose graph node: ";
+    cin >> node;
+
+    vector<int> a(vec.size()), n;
+    for (int i = 0; i < vec.size(); i++) a[i] = 0;
+    n = dfs(vec, a, node);
 
     return 0;
 }
