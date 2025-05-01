@@ -42,6 +42,28 @@ void print(vector<vector<int>> vc) {
     }
 }
 
+vector<int> bfs(vector<vector<int>> vc, vector<int> a, int s) {
+    int x = s;
+    a[x] = 1;
+    queue<int> q;
+    q.push(x);
+
+    while (!q.empty()) {
+        x = q.front();
+        q.pop();
+        int i = 0;
+        while (i < vc[x].size()) {
+            if (a[vc[x][i]] == 0) {
+                int y = vc[x][i];
+                a[y] = 1;
+                q.push(y);
+            }
+            i++;
+        }
+    }
+    return a;
+}
+
 int main(){
 	vector<vector<int>> vec;
     vec = input();
