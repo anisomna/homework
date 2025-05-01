@@ -47,5 +47,11 @@ int main(){
     print(vec);
     cout << endl;
 
+    int node;
+    cout << "choose graph node: ";
+    cin >> node;
+    if (vec[node][0] == -1) cout << "the number of nodes adjacent: 0";
+    else cout << "the number of nodes adjacent: " << vec[node].size() << endl;
+
     return 0;
 }
