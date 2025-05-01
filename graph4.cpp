@@ -70,5 +70,22 @@ int main(){
     print(vec);
     cout << endl;
 
+    
+    vector<int> a(vec.size()), n;
+    for (int i = 0; i < vec.size(); i++) a[i] = 0;
+    n = bfs(vec, a, vec[0][0]);
+
+    cout << "nodes-origins: ";
+    bool fl = true;
+    for (int i = 0; i < n.size(); i++) {
+        if (n[i] == 0) {
+            if (fl) {
+                cout << i;
+                fl = false;
+            }
+            else cout << ", " << i;
+        } 
+    }
+
     return 0;
 }
