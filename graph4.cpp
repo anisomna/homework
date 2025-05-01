@@ -76,15 +76,18 @@ int main(){
     n = bfs(vec, a, vec[0][0]);
 
     cout << "nodes-origins: ";
-    bool fl = true;
+    bool fl = true, count = true;
     for (int i = 0; i < n.size(); i++) {
         if (n[i] == 0) {
+            count = false;
             if (fl) {
                 cout << i;
                 fl = false;
             }
             else cout << ", " << i;
-        } 
+        }
+        if (!count)
+            cout << "none found";
     }
 
     return 0;
