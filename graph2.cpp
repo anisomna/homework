@@ -36,12 +36,14 @@ void print(vector<vector<int>> vc) {
     for (int i = 0; i < vc.size(); i++, cout << endl) {
         cout << i << ": ";
         for (int j = 0; j < vc[i].size(); j++) {
-            cout << vc[i][j] << " ";
+            if (vc[i][j] != -1)
+                cout << vc[i][j] << " ";
         }
     }
 }
 
 void del_el(vector<int> &vc, int x) {
+    if (vc.size() == 1) vector<int>::iterator it = vc.insert(vc.begin(), -1);
     vector<int>::iterator it = remove(vc.begin(), vc.end(), x);
     vc.erase(it, vc.end());
 }
