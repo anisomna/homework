@@ -32,9 +32,20 @@ vector<vector<int>> input() {
     return vc;
 }
 
+void print(vector<vector<int>> vc) {
+    for (int i = 0; i < vc.size(); i++, cout << endl) {
+        cout << i << ": ";
+        for (int j = 0; j < vc[i].size(); j++) {
+            cout << vc[i][j] << " ";
+        }
+    }
+}
+
 int main(){
 	vector<vector<int>> vec;
     vec = input();
+    print(vec);
+    cout << endl;
 
     return 0;
 }
