@@ -68,5 +68,17 @@ int main(){
     for (int i = 0; i < vec.size(); i++) a[i] = 0;
     n = dfs(vec, a, node);
 
+    cout << "nodes that can't be reached: ";
+    bool fl = true;
+    for (int i = 0; i < n.size(); i++) {
+        if (n[i] == 0) {
+            if (fl) {
+                cout << i;
+                fl = false;
+            }
+            else cout << ", " << i;
+        } 
+    }
+
     return 0;
 }
