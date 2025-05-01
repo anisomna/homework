@@ -41,11 +41,37 @@ void print(vector<vector<int>> vc) {
     }
 }
 
+void del_el(vector<int> &vc, int x) {
+    vector<int>::iterator it = remove(vc.begin(), vc.end(), x);
+    vc.erase(it, vc.end());
+}
+
+void del(vector<vector<int>> &vc, int x) {
+    int temp;
+    for (int i = 0; i < vc[x].size(); i++) {
+        temp = vc[x][i];
+        del_el(vc[temp], x);
+    }
+    vc.erase(vc.begin() + x);
+}
+
+void del_edges(vector<vector<int>> &vc, int x, int y) {
+    del_el(vc[x], y);
+    del_el(vc[y], x);
+}
+
 int main(){
 	vector<vector<int>> vec;
     vec = input();
     print(vec);
     cout << endl;
+
+    int x, y;
+    cout << "choose edge to delete: ";
+    cin >> x >> y;
+    del_edges(vec, x, y);
+    cout << endl;
+    print(vec);
 
     return 0;
 }
