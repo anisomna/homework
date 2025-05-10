@@ -43,6 +43,19 @@ void print(vector<vector<int>> vc) {
     }
 }
 
+vector<int> order;
+bool a[1000] = {false};
+
+void dfs(int x) {
+    a[x] = true;
+    for (auto y : gr[x]) {
+        if (!a[y]) {
+            dfs(y);
+        }
+    }
+    order.push_back(x);
+}
+
 int main() {
     input();
     print(gr);
