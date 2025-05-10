@@ -136,6 +136,14 @@ void euler(vector<vector<int>>& gr, int n) {
         }
     }
 
+    // проверяем, является ли граф несвязным
+    for (int d : degrees) {
+        if (d != 0) {
+            cout << "no path, no cycle" << endl;
+            return;
+        }
+    }
+
     if (eu_cycle) cout << "euler cycle: ";
     else cout << "euler path: ";
 
