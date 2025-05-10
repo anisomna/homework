@@ -61,6 +61,23 @@ int main() {
     print(gr);
     cout << endl;
     
+    for (int i = 0; i < gr.size(); i++) {
+        if (!a[i]) {
+            dfs(i);
+        }
+    }
+    reverse(order.begin(), order.end());
+
+    cout << "topological sort: ";
+    bool fl = true;
+    for (int i : order) {
+        if (fl) {
+            cout << i;
+            fl = false;
+        }
+        else cout << " -> " << i;
+    }
+    cout << endl;
 
     return 0;
 }
